@@ -1,5 +1,5 @@
 ---
-name: ganger-init
+name: ganger:init
 description: Initialize Ganger team coordination on a project. Use when the user runs "ganger init", "set up ganger", "initialize team state", or wants to start using Ganger on a repo for the first time.
 ---
 

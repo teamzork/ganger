@@ -1,5 +1,5 @@
 ---
-name: ganger-setup
+name: ganger:setup
 description: Set up Ganger for a contributor on a cloned repo. Use when the user runs "ganger setup", "set up my ganger identity", or has just cloned a repo that already has Ganger initialized and needs to register themselves.
 ---
 

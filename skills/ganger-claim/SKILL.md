@@ -1,5 +1,5 @@
 ---
-name: ganger-claim
+name: ganger:claim
 description: Claim a phase and begin work. Use when the user runs "ganger claim <N>", "claim phase <N>", "I want to work on phase <N>", or asks to take ownership of a slice.
 ---
 

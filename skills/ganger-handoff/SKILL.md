@@ -1,5 +1,5 @@
 ---
-name: ganger-handoff
+name: ganger:handoff
 description: Signal that a phase is complete and ready for review. Use when the user runs "ganger handoff", "I'm done with my phase", "mark phase ready for review", or wants to hand off their slice to the team.
 ---
 

@@ -1,5 +1,5 @@
 ---
-name: ganger-done
+name: ganger:done
 description: Mark a phase as fully merged and unblock downstream phases. Use when the user runs "ganger done <N>", "phase <N> is merged", "mark phase <N> complete", or after a PR has landed and the phase is fully merged into main.
 ---
 

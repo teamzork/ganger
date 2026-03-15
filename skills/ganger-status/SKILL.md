@@ -1,5 +1,5 @@
 ---
-name: ganger-status
+name: ganger:status
 description: Show current Ganger team state — who owns what phase, what's in progress, what's available. Use when the user runs "ganger status", "what's the team working on", "show team state", "what phases are available", or wants to check coordination state before claiming work.
 ---
 
