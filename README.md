@@ -70,15 +70,16 @@ Codex CLI users prefix with `$ganger-` instead of `/ganger-`.
 
 ## Multi-Agent Support
 
-Ganger uses the open [Agent Skills](https://agentskills.io) standard — the same `SKILL.md` format recognized by Claude Code, Codex CLI, and Antigravity. Each contributor installs the skill for their own tool. The coordination state is platform-agnostic.
+The coordination state (`.ganger/TEAM-STATE.md`) is plain markdown on disk — platform-agnostic. Each contributor installs Ganger for their own agent.
 
-| Platform | Skills path | Command prefix |
-|---|---|---|
-| Claude Code | `~/.claude/skills/ganger-*/` | `/ganger-` |
-| Codex CLI | `~/.agents/skills/ganger-*/` | `$ganger-` |
-| Antigravity | `~/.agent/skills/ganger-*/` | `/ganger-` |
+| Platform | Install path | Format | Command prefix |
+|---|---|---|---|
+| Claude Code | `~/.claude/skills/ganger-*/` | SKILL.md | `/ganger-` |
+| Paul ([ChristopherKahler/paul](https://github.com/ChristopherKahler/paul)) | `~/.claude/commands/` | flat .md | `/ganger-` |
+| Codex CLI | `~/.agents/skills/ganger-*/` | SKILL.md | `$ganger-` |
+| Antigravity | `~/.agent/skills/ganger-*/` | SKILL.md | `/ganger-` |
 
-One contributor can use Claude Code, another Codex CLI — they both read and write the same `TEAM-STATE.md` via git.
+Paul runs inside Claude Code and uses `.claude/commands/` with flat `.md` files. Ganger ships both formats.
 
 ---
 
