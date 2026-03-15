@@ -71,8 +71,9 @@ Handle push failure the same way as in `ganger-claim` (branch protection warning
 Return to the feature branch:
 ```bash
 git checkout <feature-branch>
-git stash pop
 ```
+
+Only run `git stash pop` if the earlier `git stash` output was NOT "No local changes to save". Do not unconditionally pop — it will fail with exit code 1 if nothing was stashed.
 
 ## Step 5 — Print PR instructions
 

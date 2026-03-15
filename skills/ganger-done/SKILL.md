@@ -49,8 +49,9 @@ Handle push failure the same way as in `ganger-claim`.
 Return to the previous branch:
 ```bash
 git checkout -
-git stash pop
 ```
+
+Only run `git stash pop` if the earlier `git stash` output was NOT "No local changes to save". Do not unconditionally pop — it will fail with exit code 1 if nothing was stashed.
 
 ## Step 4 — Check for unblocked phases
 

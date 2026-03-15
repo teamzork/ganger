@@ -41,31 +41,11 @@ For each dependency, check its status in the Slices table:
   ```
   Wait for the user's response. If `n`, stop. If `y`, continue with a note that they may need to rebase later.
 
-## Step 5 — Create the feature branch
+## Step 5 — Update TEAM-STATE.md on main first
 
-Determine the branch name: `feat/ganger-phase-<N>-<handle-without-@>`
+This is the coordination-critical step. Update the shared state on main *before* creating the feature branch. This avoids any need to stash — main is the starting point.
 
-Example: handle `@maya`, phase 3 → `feat/ganger-phase-3-maya`
-
-Run:
-```
-git checkout main
-git pull origin main
-git checkout -b feat/ganger-phase-<N>-<handle>
-```
-
-If the branch already exists locally, stop and say: "Branch `<branch>` already exists locally. Did you mean to continue existing work?"
-
-## Step 6 — Update TEAM-STATE.md on main
-
-This is the coordination-critical step. You must update TEAM-STATE.md on main without disrupting the contributor's new feature branch.
-
-Run these commands in sequence:
 ```bash
-# Stash any uncommitted changes on current branch (the new feature branch)
-git stash
-
-# Switch to main, update it
 git checkout main
 git pull origin main
 ```
@@ -73,7 +53,7 @@ git pull origin main
 Edit `.ganger/TEAM-STATE.md`: in the Slices table, find the row for this phase and update:
 - Owner → `<handle>`
 - Status → `in-progress`
-- Branch → `<branch-name>`
+- Branch → `<branch-name>` (use the name you will create: `feat/ganger-phase-<N>-<handle-without-@>`)
 - Updated → today's date (YYYY-MM-DD)
 
 Then commit and push:
@@ -92,11 +72,17 @@ If the push fails due to branch protection, print:
   For now, the local TEAM-STATE.md has been updated but is not yet shared.
 ```
 
-After the commit (successful or not), return to the feature branch:
+## Step 6 — Create and check out the feature branch
+
+Now create the feature branch from the updated main:
+
 ```bash
-git checkout feat/ganger-phase-<N>-<handle>
-git stash pop
+git checkout -b feat/ganger-phase-<N>-<handle-without-@>
 ```
+
+If the branch already exists locally, stop and say: "Branch `<branch>` already exists locally. Did you mean to continue existing work?"
+
+No stash needed — the branch is created fresh from main after the state update.
 
 ## Step 7 — Print confirmation
 
