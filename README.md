@@ -1,8 +1,15 @@
-# Ganger
+```
+ ██████╗  █████╗ ███╗   ██╗ ██████╗ ███████╗██████╗
+██╔════╝ ██╔══██╗████╗  ██║██╔════╝ ██╔════╝██╔══██╗
+██║  ███╗███████║██╔██╗ ██║██║  ███╗█████╗  ██████╔╝
+██║   ██║██╔══██║██║╚██╗██║██║   ██║██╔══╝  ██╔══██╗
+╚██████╔╝██║  ██║██║ ╚████║╚██████╔╝███████╗██║  ██║
+ ╚═════╝ ╚═╝  ╚═╝╚═╝  ╚═══╝ ╚═════╝ ╚══════╝╚═╝  ╚═╝
+```
 
 > Multi-agent team coordination for GSD projects. Claim a slice, run your agent, ship without colliding.
 
-Ganger is a coordination layer on top of the [GSD (Get Shit Done)](https://github.com/gsd-build/get-shit-done) framework that makes it work for teams. GSD is a powerful solo-developer workflow — fresh agent contexts, atomic commits, wave-based parallel execution. But it breaks the moment a second person shows up. Ganger fixes that.
+Ganger is a coordination layer that makes [GSD (Get Shit Done)](https://github.com/gsd-build/get-shit-done) work for teams. GSD v1 was designed explicitly for solo developers — fresh agent contexts, atomic commits, wave-based parallel execution — and has no concept of multiple people sharing a project. GSD v2 (March 2026) added unique milestone IDs to prevent naming collisions, but still has no slice ownership, no handoff protocol, and no concurrent execution coordination. Ganger fills that gap.
 
 Works with **Claude Code**, **Codex CLI**, and **Antigravity**. Team members can use different tools.
 
