@@ -57,14 +57,14 @@ The only shared state is a single markdown file — `.ganger/TEAM-STATE.md` — 
 
 | Command | Who runs it | What it does |
 |---|---|---|
-| `/ganger:init` | Team lead, once | Reads GSD roadmap, creates TEAM-STATE.md, all phases set to available |
-| `/ganger:setup` | Each contributor, once | Sets local identity handle, pulls current state |
-| `/ganger:status` | Anyone, anytime | Pulls latest state and prints who owns what |
-| `/ganger:claim <N>` | Contributor | Claims a phase, creates branch, warns on unmet dependencies |
-| `/ganger:handoff` | Contributor | Marks phase ready for review, prompts for a context note |
-| `/ganger:done <N>` | Anyone | Marks phase merged, unblocks downstream slices |
+| `/ganger-init` | Team lead, once | Reads GSD roadmap, creates TEAM-STATE.md, all phases set to available |
+| `/ganger-setup` | Each contributor, once | Sets local identity handle, pulls current state |
+| `/ganger-status` | Anyone, anytime | Pulls latest state and prints who owns what |
+| `/ganger-claim <N>` | Contributor | Claims a phase, creates branch, warns on unmet dependencies |
+| `/ganger-handoff` | Contributor | Marks phase ready for review, prompts for a context note |
+| `/ganger-done <N>` | Anyone | Marks phase merged, unblocks downstream slices |
 
-Codex CLI users prefix with `$ganger:` instead of `/ganger:`.
+Codex CLI users prefix with `$ganger-` instead of `/ganger-`.
 
 ---
 
@@ -74,9 +74,9 @@ Ganger uses the open [Agent Skills](https://agentskills.io) standard — the sam
 
 | Platform | Skills path | Command prefix |
 |---|---|---|
-| Claude Code | `~/.claude/skills/ganger-*/` | `/ganger:` |
-| Codex CLI | `~/.agents/skills/ganger-*/` | `$ganger:` |
-| Antigravity | `~/.agent/skills/ganger-*/` | `/ganger:` |
+| Claude Code | `~/.claude/skills/ganger-*/` | `/ganger-` |
+| Codex CLI | `~/.agents/skills/ganger-*/` | `$ganger-` |
+| Antigravity | `~/.agent/skills/ganger-*/` | `/ganger-` |
 
 One contributor can use Claude Code, another Codex CLI — they both read and write the same `TEAM-STATE.md` via git.
 
@@ -105,15 +105,15 @@ Requires: git, GSD installed, and any one of Claude Code / Codex CLI / Antigravi
 
 Two developers, **@maya** (Claude Code) and **@dan** (Codex CLI), building a SaaS where patients pay specialists for second medical opinions.
 
-**Day 0** — Maya runs GSD to generate the roadmap. Six phases: Auth, Doctor Profiles, Case Submission, Matching & Checkout, Review Dashboard, Notifications. She runs `/ganger:init`. Dan clones and runs `$ganger:setup`.
+**Day 0** — Maya runs GSD to generate the roadmap. Six phases: Auth, Doctor Profiles, Case Submission, Matching & Checkout, Review Dashboard, Notifications. She runs `/ganger-init`. Dan clones and runs `$ganger-setup`.
 
-**Day 1** — Both check `/ganger:status`. Maya claims Phase 1 (Auth), Dan claims Phase 2 (Doctor Profiles). No overlap. Both run normal GSD workflows on their own branches simultaneously.
+**Day 1** — Both check `/ganger-status`. Maya claims Phase 1 (Auth), Dan claims Phase 2 (Doctor Profiles). No overlap. Both run normal GSD workflows on their own branches simultaneously.
 
-**Day 2** — Maya's auth implementation finishes first. She runs `/ganger:handoff` and leaves a note:
+**Day 2** — Maya's auth implementation finishes first. She runs `/ganger-handoff` and leaves a note:
 
 > Auth is Better Auth with three roles: patient, doctor, admin. `session.user.role` is set on the session object. Doctor accounts require `doctor.verified = true` before they can accept cases.
 
-She opens a PR. Dan reviews, merges, runs `$ganger:done 1`, and immediately claims Phase 3 (Case Submission) while Maya stays on Phase 2. Two slices running in parallel — different tables, no conflict.
+She opens a PR. Dan reviews, merges, runs `$ganger-done 1`, and immediately claims Phase 3 (Case Submission) while Maya stays on Phase 2. Two slices running in parallel — different tables, no conflict.
 
 **Day 3** — Dan finishes Phase 2 and leaves a handoff note with the full doctor schema. Maya's agent reads it before writing a line of Phase 3 code. No ramp-up call. No Slack archaeology.
 

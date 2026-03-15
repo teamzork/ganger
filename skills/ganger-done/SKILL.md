@@ -7,7 +7,7 @@ Mark a phase as merged and surface any newly unblocked phases. Follow these step
 
 ## Step 1 — Get the phase number
 
-If the user provided a phase number (e.g. `/ganger:done 2`), use that. If not, fetch and display current state and ask: "Which phase has merged?"
+If the user provided a phase number (e.g. `/ganger-done 2`), use that. If not, fetch and display current state and ask: "Which phase has merged?"
 
 ## Step 2 — Fetch and validate
 
@@ -70,7 +70,7 @@ If any phases are newly unblocked:
     Phase <X>  <title>
     Phase <Y>  <title>
 
-Run /ganger:claim <N> to take one.
+Run /ganger-claim <N> to take one.
 ```
 
 If nothing is unblocked, just print the confirmation and nothing else.

@@ -8,7 +8,7 @@ Initialize Ganger team coordination for this project. Follow these steps exactly
 ## Step 1 — Check preconditions
 
 - Run `git rev-parse --is-inside-work-tree` to confirm this is a git repo. If not, stop and tell the user.
-- Check if `.ganger/TEAM-STATE.md` already exists. If it does, stop and say: "Ganger is already initialized. Run `/ganger:status` to see current state."
+- Check if `.ganger/TEAM-STATE.md` already exists. If it does, stop and say: "Ganger is already initialized. Run `/ganger-status` to see current state."
 - Check that there is at least one remote configured (`git remote -v`). Warn (but do not block) if no remote exists — TEAM-STATE.md updates require a shared remote to be useful.
 
 ## Step 2 — Gather phases
@@ -89,9 +89,9 @@ Print this message, substituting the actual remote URL if available:
 
 Each teammate should:
   1. Clone or pull this repo
-  2. Run /ganger:setup  (or $ganger:setup on Codex CLI)
-  3. Run /ganger:status to see available slices
-  4. Run /ganger:claim <N> to take a phase
+  2. Run /ganger-setup  (or $ganger-setup on Codex CLI)
+  3. Run /ganger-status to see available slices
+  4. Run /ganger-claim <N> to take a phase
 
 Push this commit so teammates can pull the initial state:
   git push origin main

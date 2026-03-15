@@ -7,11 +7,11 @@ Claim a phase slice and set up the contributor's branch. Follow these steps exac
 
 ## Step 1 — Read identity
 
-Read `.ganger/config.md` to get the contributor's handle. If the file doesn't exist, stop and say: "Run `/ganger:setup` first to register your handle."
+Read `.ganger/config.md` to get the contributor's handle. If the file doesn't exist, stop and say: "Run `/ganger-setup` first to register your handle."
 
 ## Step 2 — Get the phase number
 
-If the user provided a phase number in their message (e.g. `/ganger:claim 3`), use that. If not, run `/ganger:status` output and ask: "Which phase would you like to claim?"
+If the user provided a phase number in their message (e.g. `/ganger-claim 3`), use that. If not, run `/ganger-status` output and ask: "Which phase would you like to claim?"
 
 ## Step 3 — Fetch and validate
 
@@ -23,7 +23,7 @@ Find the row for the requested phase. Check:
 
 **If status is not `available`:** Stop and report:
 - `in-progress` → "Phase <N> is already claimed by <owner> on `<branch>`."
-- `review` → "Phase <N> is in review by <owner>. Wait for it to merge or run `/ganger:done <N>` after the PR lands."
+- `review` → "Phase <N> is in review by <owner>. Wait for it to merge or run `/ganger-done <N>` after the PR lands."
 - `merged` → "Phase <N> is already merged."
 
 **If status is `available`:** Continue.
@@ -91,5 +91,5 @@ No stash needed — the branch is created fresh from main after the state update
   Branch: feat/ganger-phase-<N>-<handle>
 
 You're now on your feature branch. Work on this phase as normal.
-When you're done, run /ganger:handoff to signal completion.
+When you're done, run /ganger-handoff to signal completion.
 ```

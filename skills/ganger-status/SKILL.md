@@ -17,7 +17,7 @@ Then read the TEAM-STATE.md directly from the remote main branch (not the local 
 git show origin/main:.ganger/TEAM-STATE.md
 ```
 
-If this fails (no remote, or file doesn't exist on main), fall back to reading the local `.ganger/TEAM-STATE.md`. If that also doesn't exist, stop and say: "Ganger is not initialized. Run `/ganger:init` to get started."
+If this fails (no remote, or file doesn't exist on main), fall back to reading the local `.ganger/TEAM-STATE.md`. If that also doesn't exist, stop and say: "Ganger is not initialized. Run `/ganger-init` to get started."
 
 Note the fetch timestamp so you can show "pulled N minutes ago" in the header.
 
@@ -54,7 +54,7 @@ Ganger — Project Status  (fetched just now)
   Phase 5  Review Dashboard        ○ available      depends on: Phase 4
   Phase 6  Notifications           ○ available      depends on: Phase 4, Phase 5
 
-Run /ganger:claim <N> to take a slice.
+Run /ganger-claim <N> to take a slice.
 ```
 
 If all phases are merged, print: "✓ All phases complete."

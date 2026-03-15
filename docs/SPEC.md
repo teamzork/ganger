@@ -66,7 +66,7 @@ Six slash commands. All are thin orchestrators — they read/write markdown and 
 
 ---
 
-### `/ganger:init`
+### `/ganger-init`
 
 Run once per project by the team lead after GSD's roadmap exists.
 
@@ -75,13 +75,13 @@ Run once per project by the team lead after GSD's roadmap exists.
 2. Creates `.ganger/TEAM-STATE.md` with every phase set to `available`.
 3. Adds `.ganger/config.md` to `.gitignore`.
 4. Commits TEAM-STATE.md to the current branch with message `chore: init ganger team state`.
-5. Prints instructions for teammates: clone, run `/ganger:setup`, start claiming.
+5. Prints instructions for teammates: clone, run `/ganger-setup`, start claiming.
 
 **Does not:** create branches, touch planning files, or require teammates to be present.
 
 ---
 
-### `/ganger:setup`
+### `/ganger-setup`
 
 Run once per contributor after cloning.
 
@@ -93,7 +93,7 @@ Run once per contributor after cloning.
 
 ---
 
-### `/ganger:status`
+### `/ganger-status`
 
 Print the current state of all slices. Can be run any time.
 
@@ -107,14 +107,14 @@ Ganger — Project Status (pulled 2 minutes ago)
   Phase 3  Image Transform       ○ available      depends on: Phase 2
   Phase 4  Public Gallery        ○ available      depends on: Phase 3
 
-Run /ganger:claim <phase> to take a slice.
+Run /ganger-claim <phase> to take a slice.
 ```
 
 Pulls latest TEAM-STATE.md from remote before rendering. Never reads stale local state.
 
 ---
 
-### `/ganger:claim <phase>`
+### `/ganger-claim <phase>`
 
 Claim an available slice and begin work.
 
@@ -136,7 +136,7 @@ From this point the contributor works exactly as they would in solo GSD — disc
 
 ---
 
-### `/ganger:handoff`
+### `/ganger-handoff`
 
 Signal that a slice is complete and ready for the next person.
 
@@ -151,7 +151,7 @@ Does not open the PR automatically — the contributor does that. Ganger just fl
 
 ---
 
-### `/ganger:done <phase>`
+### `/ganger-done <phase>`
 
 Mark a slice fully merged. Run by any contributor after the PR lands.
 
@@ -187,9 +187,9 @@ Claude Code, Codex CLI, and Antigravity all share the open Agent Skills standard
 
 | Platform | Skills path | Instructions file | Command prefix |
 |---|---|---|---|
-| Claude Code | `.claude/skills/ganger/` | `CLAUDE.md` | `/ganger:` |
-| Codex CLI | `.codex/skills/ganger/` or `~/.agents/skills/ganger/` | `AGENTS.md` | `$ganger:` |
-| Antigravity | `.agent/skills/ganger/` | `.agent/rules/ganger.md` | `/ganger:` |
+| Claude Code | `.claude/skills/ganger/` | `CLAUDE.md` | `/ganger-` |
+| Codex CLI | `.codex/skills/ganger/` or `~/.agents/skills/ganger/` | `AGENTS.md` | `$ganger-` |
+| Antigravity | `.agent/skills/ganger/` | `.agent/rules/ganger.md` | `/ganger-` |
 
 The `.ganger/` directory and `TEAM-STATE.md` are shared and identical across all three. No platform-specific state.
 
@@ -199,13 +199,13 @@ Each contributor installs Ganger for their own agent. From that point they run t
 
 ```bash
 # Claude Code contributor
-/ganger:claim 3
+/ganger-claim 3
 
 # Codex CLI contributor
-$ganger:claim 3
+$ganger-claim 3
 
 # Antigravity contributor
-/ganger:claim 3
+/ganger-claim 3
 ```
 
 All three update the same `TEAM-STATE.md` via the same git protocol.
@@ -218,7 +218,7 @@ If a future version needs to invoke shell helpers directly, it will ship platfor
 
 ### Platform Notes
 
-**Codex CLI** — Uses `$ganger:` prefix. The SKILL.md `description` field handles implicit activation: when a user describes claiming a slice or checking team status, Codex auto-loads the Ganger skill without explicit invocation. Global install at `~/.agents/skills/ganger/` makes it available across all projects.
+**Codex CLI** — Uses `$ganger-` prefix. The SKILL.md `description` field handles implicit activation: when a user describes claiming a slice or checking team status, Codex auto-loads the Ganger skill without explicit invocation. Global install at `~/.agents/skills/ganger/` makes it available across all projects.
 
 **Antigravity** — Google's agent-first IDE (VS Code fork, Nov 2025). Supports Claude Sonnet 4.6 and Opus 4.6 as selectable models. GSD has already been ported to Antigravity by the community, meaning contributors who prefer it are already in the GSD mental model.
 
@@ -247,15 +247,15 @@ Phase 5 — Review Dashboard      (doctor queue, response editor, delivery)
 Phase 6 — Notifications         (email on case received, review ready, Resend)
 ```
 
-Maya runs `/ganger:init`. Dan clones the repo and runs `$ganger:setup`, entering `@dan` as his handle.
+Maya runs `/ganger-init`. Dan clones the repo and runs `$ganger-setup`, entering `@dan` as his handle.
 
 ### Day 1 — Both Start at Once
 
-Both contributors run `/ganger:status`, see all phases available, and claim independently:
+Both contributors run `/ganger-status`, see all phases available, and claim independently:
 
 ```
-/ganger:claim 1     →  feat/ganger-phase-1-maya created, checked out
-$ganger:claim 2     →  feat/ganger-phase-2-dan created, checked out
+/ganger-claim 1     →  feat/ganger-phase-1-maya created, checked out
+$ganger-claim 2     →  feat/ganger-phase-2-dan created, checked out
 ```
 
 TEAM-STATE.md after both claims:
@@ -274,13 +274,13 @@ Each runs their normal GSD workflow on their branch. `.planning/` artifacts stay
 Auth is simpler than doctor onboarding. Maya's agent finishes Phase 1 and runs:
 
 ```
-/ganger:handoff
+/ganger-handoff
 ```
 
 Note left:
 > Auth is Better Auth with three roles: patient, doctor, admin. Role is set on the session object as `session.user.role`. Middleware at `middleware.ts` checks role before routing to `/dashboard`, `/doctor`, `/admin`. Doctor accounts require `doctor.verified = true` before they can accept cases.
 
-Phase 1 → `review`. Maya opens her PR. Dan reviews, merges, runs `$ganger:done 1`.
+Phase 1 → `review`. Maya opens her PR. Dan reviews, merges, runs `$ganger-done 1`.
 
 Maya immediately claims Phase 3 (Case Submission) — no dependency issues. Two slices now run in parallel: Phase 2 touches `doctors` schema, Phase 3 touches `cases` schema and R2 upload. Different files, different tables.
 
@@ -289,7 +289,7 @@ Maya immediately claims Phase 3 (Case Submission) — no dependency issues. Two 
 Dan's agent wraps Phase 2 and runs:
 
 ```
-$ganger:handoff
+$ganger-handoff
 ```
 
 Note left:
@@ -298,7 +298,7 @@ Note left:
 Phase 4 is still blocked on Phase 3. Dan claims Phase 6 (Notifications) speculatively — Resend integration and email templates don't touch anything Phase 5 owns:
 
 ```
-$ganger:claim 6
+$ganger-claim 6
 ```
 ```
 ⚠ Phase 6 depends on Phase 5 (Review Dashboard), which is available (unclaimed).
@@ -311,9 +311,9 @@ Slice claimed. Your branch will need to merge Phase 5 before notification trigge
 Maya finishes Phase 3 and hands off with the full case schema. Dan reads both prior handoff notes (Phase 2 + Phase 3) before writing a line of Phase 4. Zero ramp-up.
 
 ```
-$ganger:done 3
-$ganger:claim 4     →  feat/ganger-phase-4-dan
-/ganger:claim 5     →  feat/ganger-phase-5-maya (override, stubs assignment logic)
+$ganger-done 3
+$ganger-claim 4     →  feat/ganger-phase-4-dan
+/ganger-claim 5     →  feat/ganger-phase-5-maya (override, stubs assignment logic)
 ```
 
 Final state:
@@ -352,8 +352,8 @@ Final state:
 
 ## Success Criteria
 
-1. Two developers can run `/ganger:claim` on different phases without corrupting each other's planning state.
-2. `/ganger:status` always reflects current team state after a pull.
+1. Two developers can run `/ganger-claim` on different phases without corrupting each other's planning state.
+2. `/ganger-status` always reflects current team state after a pull.
 3. A completed slice surfaces a note visible to the next contributor before they start.
 4. The full GSD workflow (discuss → plan → execute → verify) runs unmodified inside a claimed branch.
 5. No special server setup required — works on any repo with git remote access.

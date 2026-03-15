@@ -7,7 +7,7 @@ Mark the current phase as complete and ready for review. Prompt for a handoff no
 
 ## Step 1 — Read identity and current branch
 
-Read `.ganger/config.md` to get the contributor's handle. If it doesn't exist, stop: "Run `/ganger:setup` first."
+Read `.ganger/config.md` to get the contributor's handle. If it doesn't exist, stop: "Run `/ganger-setup` first."
 
 Get the current branch: `git branch --show-current`
 
@@ -84,7 +84,7 @@ Open a pull request for your branch:
   gh pr create --base main --head <branch> --title "Phase <N>: <title>"
 
 After the PR merges, any contributor can run:
-  /ganger:done <N>
+  /ganger-done <N>
 to unblock downstream phases.
 ```
 
