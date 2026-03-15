@@ -74,9 +74,9 @@ Ganger uses the open [Agent Skills](https://agentskills.io) standard — the sam
 
 | Platform | Skills path | Command prefix |
 |---|---|---|
-| Claude Code | `~/.claude/skills/ganger/` | `/ganger:` |
-| Codex CLI | `~/.agents/skills/ganger/` | `$ganger:` |
-| Antigravity | `~/.agent/skills/ganger/` | `/ganger:` |
+| Claude Code | `~/.claude/skills/ganger-*/` | `/ganger:` |
+| Codex CLI | `~/.agents/skills/ganger-*/` | `$ganger:` |
+| Antigravity | `~/.agent/skills/ganger-*/` | `/ganger:` |
 
 One contributor can use Claude Code, another Codex CLI — they both read and write the same `TEAM-STATE.md` via git.
 
@@ -87,13 +87,15 @@ One contributor can use Claude Code, another Codex CLI — they both read and wr
 Each contributor installs independently for their own agent:
 
 ```bash
-git clone https://github.com/team-zork/ganger-skill ./ganger-tmp
+git clone https://github.com/team-zork/ganger ./ganger-tmp
 
 # Install for your agent (pick one):
-cp -r ganger-tmp/. ~/.claude/skills/ganger/     # Claude Code
-cp -r ganger-tmp/. ~/.agents/skills/ganger/      # Codex CLI
-cp -r ganger-tmp/. ~/.agent/skills/ganger/       # Antigravity
+cp -r ganger-tmp/skills/ganger-* ~/.claude/skills/   # Claude Code
+cp -r ganger-tmp/skills/ganger-* ~/.agents/skills/   # Codex CLI
+cp -r ganger-tmp/skills/ganger-* ~/.agent/skills/    # Antigravity
 ```
+
+Restart your agent session after installing to pick up the new skills.
 
 Requires: git, GSD installed, and any one of Claude Code / Codex CLI / Antigravity.
 
