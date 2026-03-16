@@ -62,6 +62,7 @@ The only shared state is a single markdown file — `.ganger/TEAM-STATE.md` — 
 | `/ganger-status` | Anyone, anytime | Pulls latest state and prints who owns what |
 | `/ganger-claim <N>` | Contributor | Claims a phase, creates branch, warns on unmet dependencies |
 | `/ganger-handoff` | Contributor | Marks phase ready for review, prompts for a context note |
+| `/ganger-merge` | Contributor | Merges branch directly into main, skipping PR — warns before proceeding |
 | `/ganger-done <N>` | Anyone | Marks phase merged, unblocks downstream slices |
 
 Codex CLI users prefix with `$ganger-` instead of `/ganger-`.
