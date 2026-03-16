@@ -89,7 +89,7 @@ Paul runs inside Claude Code and uses `.claude/commands/` with flat `.md` files.
 Each contributor installs independently for their own agent:
 
 ```bash
-git clone https://github.com/team-zork/ganger ./ganger-tmp
+git clone https://github.com/teamzork/ganger ./ganger-tmp
 
 # Install for your agent (pick one):
 cp -r ganger-tmp/skills/ganger-* ~/.claude/skills/   # Claude Code
