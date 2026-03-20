@@ -64,6 +64,7 @@ The only shared state is a single markdown file — `.ganger/TEAM-STATE.md` — 
 | `/ganger-handoff` | Contributor | Marks phase ready for review, prompts for a context note |
 | `/ganger-merge` | Contributor | Merges branch directly into main, skipping PR — warns before proceeding |
 | `/ganger-done <N>` | Anyone | Marks phase merged, unblocks downstream slices |
+| `/ganger-update` | Anyone | Pulls latest Ganger skills from GitHub |
 
 Codex CLI users prefix with `$ganger-` instead of `/ganger-`.
 
