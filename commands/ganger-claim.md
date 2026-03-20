@@ -68,7 +68,7 @@ If the push fails due to branch protection, print:
   For now, the local TEAM-STATE.md has been updated but is not yet shared.
 ```
 
-## Step 6 — Create and check out the feature branch
+## Step 6 — Create and push the feature branch
 
 Now create the feature branch from the updated main:
 
@@ -80,12 +80,44 @@ If the branch already exists locally, stop and say: "Branch `<branch>` already e
 
 No stash needed — the branch is created fresh from main after the state update.
 
-## Step 7 — Print confirmation
+Push the branch to origin immediately so teammates can see it:
+
+```bash
+git push -u origin feat/ganger-phase-<N>-<handle-without-@>
+```
+
+The `-u` sets upstream tracking so future pushes work without specifying the remote.
+
+## Step 7 — Print confirmation with project context
+
+Show the claim confirmation, then give the contributor a full picture of where the project stands. This replaces a separate `/ganger-status` call and surfaces handoff notes they need before starting work.
 
 ```
 ✓ Phase <N> claimed — <title>
-  Branch: feat/ganger-phase-<N>-<handle>
+  Branch: feat/ganger-phase-<N>-<handle> (pushed to origin)
 
+Project status:
+  Phase 1  <title>       ✓ merged
+  Phase 2  <title>       ⚡ in-progress   @dan   (feat/ganger-phase-2-dan)
+  Phase 3  <title>       ⚡ in-progress   @you   (feat/ganger-phase-3-<handle>)
+  ...
+```
+
+Render the status table using the same format as `/ganger-status` (symbols: `✓` merged, `⚡` in-progress, `⏳` review, `○` available, `⊘` blocked). Mark the contributor's own phase with `@you` instead of repeating their handle.
+
+Then read the `## Notes` section of TEAM-STATE.md. If there are any handoff notes, print them:
+
+```
+Handoff notes:
+  > Phase 1 — Auth & Roles (@maya, 2026-03-10)
+  > Auth is Better Auth with three roles: patient, doctor, admin...
+```
+
+If there are no notes yet, skip this section entirely.
+
+End with:
+
+```
 You're now on your feature branch. Work on this phase as normal.
 When you're done, run /ganger-handoff to signal completion.
 ```
