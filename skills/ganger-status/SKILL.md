@@ -54,18 +54,33 @@ Ganger — Project Status  (fetched just now)
   Phase 5  Review Dashboard        ○ available      depends on: Phase 4
   Phase 6  Notifications           ○ available      depends on: Phase 4, Phase 5
 
-Next steps:
-  🟢 /ganger-claim <N>     → claim an available phase
-  🔵 /ganger-handoff        → hand off your in-progress phase
-  🟡 /ganger-done <N>       → mark a merged phase as complete
+What would you like to do?
+  🟢  1 → Claim a phase
+  🟡  2 → View a phase in detail
 ```
 
-If all phases are merged, print: "✓ All phases complete. No next steps."
+Build this menu dynamically based on context:
+- Always show option `1 → Claim a phase` if any phases are `available` or unblocked.
+- If the contributor owns an in-progress phase (see Step 4), show `🔵  1 → Hand off my phase` as the first option instead, and shift "Claim" to option 2.
+- If any phases are in `review` status, add: `🟡  N → Mark a phase done`
+- Never show more than 3 options.
 
-## Step 4 — Read local handle (optional)
+If all phases are merged, print: "✓ All phases complete." and skip the menu.
 
-If `.ganger/config.md` exists, read the local handle. If the current contributor owns any in-progress slices, append a note:
+## Step 4 — Read local handle and adjust menu
+
+If `.ganger/config.md` exists, read the local handle. If the current contributor owns any in-progress slices, show:
 ```
 You own: Phase <N> (<branch>)
-  🟢 Your next step: /ganger-handoff when this phase is done
 ```
+And reorder the menu so option 1 is their most likely next action (handoff).
+
+## Step 5 — Wait and execute
+
+Wait for the user to type a number. Then execute the corresponding command:
+- "Claim a phase" → ask "Which phase?" then run the `/ganger-claim` flow
+- "Hand off my phase" → run `/ganger-handoff`
+- "Mark a phase done" → ask "Which phase?" then run `/ganger-done`
+- "View a phase in detail" → ask "Which phase?" then show its notes and status
+
+If the user types anything other than a valid number, say: "Pick a number from the menu, or type what you'd like to do."

@@ -47,12 +47,17 @@ Ganger — Project Status
   Phase 2  <title>   ○ available
   ...
 
-Next steps:
-  🟢 /ganger-claim <N>     → claim a phase and start working
-  🟡 /ganger-status          → see who's working on what
+✓ Set up as <handle>. You're ready to contribute.
+
+What would you like to do?
+  🟢  1 → Claim a phase
+  🟡  2 → View status in detail
 ```
 
-Then print:
-```
-✓ Set up as <handle>. You're ready to contribute.
-```
+## Step 6 — Wait and execute
+
+Wait for the user to type a number. Then execute:
+- `1` → Ask "Which phase?" then run the `/ganger-claim` flow.
+- `2` → Run the `/ganger-status` flow.
+
+If the user types anything other than a valid number, say: "Pick a number from the menu, or type what you'd like to do."

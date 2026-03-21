@@ -87,12 +87,22 @@ Print this message, substituting the actual remote URL if available:
 ```
 ✓ Ganger initialized with <N> phases.
 
-Next steps:
-  🟢 Push to remote:  git push origin main
-  🔵 Share with teammates — each one should:
-       1. Clone or pull this repo
-       2. Run /ganger-setup  (or $ganger-setup on Codex CLI)
-       3. Run /ganger-status to see available slices
-       4. Run /ganger-claim <N> to take a phase
-  🟡 /ganger-status          → verify the initial state
+What would you like to do?
+  🟢  1 → Push to remote now
+  🔵  2 → Set up my own identity (/ganger-setup)
+  🟡  3 → View status
 ```
+
+Then print the teammate onboarding note (informational, not an action):
+```
+Tell your teammates to clone the repo and run /ganger-setup to get started.
+```
+
+## Step 8 — Wait and execute
+
+Wait for the user to type a number. Then execute:
+- `1` → Run `git push origin main`. On success, print "✓ Pushed. Teammates can now pull." Then re-show the menu with options 2 and 3.
+- `2` → Run the `/ganger-setup` flow.
+- `3` → Run the `/ganger-status` flow.
+
+If the user types anything other than a valid number, say: "Pick a number from the menu, or type what you'd like to do."

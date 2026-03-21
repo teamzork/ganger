@@ -68,7 +68,15 @@ Updated commands in: ~/.claude/commands/
 
 End with:
 ```
-Next steps:
-  🟢 Restart your agent session to pick up the new skills
-  🟡 /ganger-status          → verify everything works
+⚠ Restart your agent session to pick up the new skills.
+
+What would you like to do?
+  🟢  1 → View status
 ```
+
+## Step 6 — Wait and execute
+
+Wait for the user to type a number. Then execute:
+- `1` → Run the `/ganger-status` flow.
+
+If the user types anything other than a valid number, say: "Pick a number from the menu, or type what you'd like to do."

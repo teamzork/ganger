@@ -64,20 +64,32 @@ These phases are newly claimable. Print:
 ✓ Phase <N> marked merged.
 ```
 
-If any phases are newly unblocked:
+If any phases are newly unblocked, list them and show:
 ```
   Now claimable:
     Phase <X>  <title>
     Phase <Y>  <title>
 
-Next steps:
-  🟢 /ganger-claim <N>     → take a newly unblocked phase
-  🟡 /ganger-status          → see full project state
+What would you like to do?
+  🟢  1 → Claim phase <X>
+  🟡  2 → View status
 ```
 
-If nothing is unblocked, print the confirmation followed by:
+If multiple phases are unblocked, list each as a numbered option (e.g., `1 → Claim phase 4`, `2 → Claim phase 5`, `3 → View status`).
+
+If nothing is unblocked and there are available phases:
 ```
-Next steps:
-  🟢 /ganger-claim <N>     → claim another available phase
-  🟡 /ganger-status          → see full project state
+What would you like to do?
+  🟢  1 → Claim another phase
+  🟡  2 → View status
 ```
+
+If all phases are now merged, print: "✓ All phases complete." and skip the menu.
+
+## Step 5 — Wait and execute
+
+Wait for the user to type a number. Then execute:
+- "Claim phase <N>" → run the `/ganger-claim <N>` flow
+- "View status" → run the `/ganger-status` flow
+
+If the user types anything other than a valid number, say: "Pick a number from the menu, or type what you'd like to do."

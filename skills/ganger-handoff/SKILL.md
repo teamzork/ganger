@@ -75,15 +75,22 @@ git checkout <feature-branch>
 
 Only run `git stash pop` if the earlier `git stash` output was NOT "No local changes to save". Do not unconditionally pop — it will fail with exit code 1 if nothing was stashed.
 
-## Step 5 — Print PR instructions
+## Step 5 — Print confirmation and offer next actions
 
 ```
 ✓ Phase <N> marked for review.
 
-Next steps:
-  🟢 Open a PR:  gh pr create --base main --head <branch> --title "Phase <N>: <title>"
-  🔵 /ganger-done <N>       → run after the PR merges to unblock downstream phases
-  🟡 /ganger-status          → check team progress
+What would you like to do?
+  🟢  1 → Open a PR now
+  🔵  2 → Claim another phase
+  🟡  3 → View status
 ```
 
-If `gh` CLI is not available, show the GitHub URL pattern instead of the `gh` command.
+## Step 6 — Wait and execute
+
+Wait for the user to type a number. Then execute:
+- `1` → Run `gh pr create --base main --head <branch> --title "Phase <N>: <title>"`. If `gh` CLI is not available, show the GitHub URL pattern instead.
+- `2` → Run the `/ganger-status` flow to show available phases, then ask which to claim.
+- `3` → Run the `/ganger-status` flow.
+
+If the user types anything other than a valid number, say: "Pick a number from the menu, or type what you'd like to do."

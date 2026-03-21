@@ -122,10 +122,17 @@ If there are no notes yet, skip this section entirely.
 End with:
 
 ```
-You're now on your feature branch. Work on this phase as normal.
+You're now on your feature branch.
 
-Next steps:
-  🟢 Build Phase <N> using normal GSD commands
-  🔵 /ganger-handoff        → when you're done, signal completion
-  🟡 /ganger-status          → check team progress anytime
+What would you like to do?
+  🟢  1 → Start building this phase
+  🔵  2 → Check team status
 ```
+
+## Step 8 — Wait and execute
+
+Wait for the user to type a number. Then execute:
+- `1` → Begin working on the phase using normal GSD commands. If GSD is installed, suggest running `/gsd:execute-phase` or `/gsd:plan-phase`. Otherwise, say "Start building — run `/ganger-handoff` when you're done."
+- `2` → Run the `/ganger-status` flow.
+
+If the user types anything other than a valid number, say: "Pick a number from the menu, or type what you'd like to do."
