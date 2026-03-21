@@ -47,13 +47,25 @@ rm -f ~/.claude/commands/ganger-*.md
 cp /tmp/ganger-update/commands/ganger-*.md ~/.claude/commands/
 ```
 
-## Step 4 — Clean up
+## Step 4 — Read the changelog before cleaning up
+
+Before deleting the temp directory, read the latest changelog entry:
+
+```bash
+cat /tmp/ganger-update/CHANGELOG.md
+```
+
+Parse the **first entry only** — everything between the first `## ` heading and the second `## ` heading (or end of file). Save this text to display in Step 5.
+
+If `CHANGELOG.md` doesn't exist in the cloned repo, skip this step silently.
+
+## Step 5 — Clean up
 
 ```bash
 rm -rf /tmp/ganger-update
 ```
 
-## Step 5 — Print confirmation
+## Step 6 — Print confirmation with changelog
 
 ```
 ✓ Ganger updated to latest version.
@@ -66,6 +78,16 @@ If Paul commands were also updated, add:
 Updated commands in: ~/.claude/commands/
 ```
 
+Then print the latest changelog entry under a `What's new` header:
+
+```
+What's new:
+  <version heading from changelog>
+  <changelog body — preserve the original formatting>
+```
+
+If no changelog was found, skip the "What's new" section.
+
 End with:
 ```
 ⚠ Restart your agent session to pick up the new skills.
@@ -74,7 +96,7 @@ What would you like to do?
   🟢  1 → View status
 ```
 
-## Step 6 — Wait and execute
+## Step 7 — Wait and execute
 
 Wait for the user to type a number. Then execute:
 - `1` → Run the `/ganger-status` flow.
