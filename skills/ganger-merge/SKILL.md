@@ -139,5 +139,7 @@ If any phases are newly unblocked:
     Phase <X>  <title>
     Phase <Y>  <title>
 
-Run /ganger:claim <N> to take one.
+Next steps:
+  🟢 /ganger:claim <N>     → take a newly unblocked phase
+  🟡 /ganger:status          → see full project state
 ```

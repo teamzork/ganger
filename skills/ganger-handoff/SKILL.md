@@ -80,12 +80,10 @@ Only run `git stash pop` if the earlier `git stash` output was NOT "No local cha
 ```
 ✓ Phase <N> marked for review.
 
-Open a pull request for your branch:
-  gh pr create --base main --head <branch> --title "Phase <N>: <title>"
-
-After the PR merges, any contributor can run:
-  /ganger-done <N>
-to unblock downstream phases.
+Next steps:
+  🟢 Open a PR:  gh pr create --base main --head <branch> --title "Phase <N>: <title>"
+  🔵 /ganger-done <N>       → run after the PR merges to unblock downstream phases
+  🟡 /ganger-status          → check team progress
 ```
 
-If `gh` CLI is not available, show the GitHub URL pattern instead.
+If `gh` CLI is not available, show the GitHub URL pattern instead of the `gh` command.

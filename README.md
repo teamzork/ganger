@@ -141,6 +141,25 @@ Full walkthrough in [docs/SPEC.md](docs/SPEC.md#example-workflow).
 
 ---
 
+## Next Steps for Contributors
+
+> [!NOTE]
+> **First time here?** Install Ganger for your agent and run `/ganger-setup` to register your identity.
+
+> [!TIP]
+> **Ready to work?** Run `/ganger-status` to see available phases, then `/ganger-claim <N>` to lock one.
+
+> [!IMPORTANT]
+> **Finishing a phase?** Run `/ganger-handoff` and write a context note — your teammate's agent reads it before touching the code.
+
+> [!WARNING]
+> **Before claiming a phase with unmet dependencies**, make sure upstream phases are merged. Ganger will warn you, but won't block you.
+
+> [!CAUTION]
+> **Using `/ganger-merge`?** This bypasses PR review and merges directly to main. Only use when your team has agreed to skip review for a phase.
+
+---
+
 ## Status
 
 v0.1 alpha — in design. See [docs/SPEC.md](docs/SPEC.md) for the full specification.

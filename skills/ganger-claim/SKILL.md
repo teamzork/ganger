@@ -123,5 +123,9 @@ End with:
 
 ```
 You're now on your feature branch. Work on this phase as normal.
-When you're done, run /ganger-handoff to signal completion.
+
+Next steps:
+  🟢 Build Phase <N> using normal GSD commands
+  🔵 /ganger-handoff        → when you're done, signal completion
+  🟡 /ganger-status          → check team progress anytime
 ```

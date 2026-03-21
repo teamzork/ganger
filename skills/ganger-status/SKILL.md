@@ -54,14 +54,18 @@ Ganger — Project Status  (fetched just now)
   Phase 5  Review Dashboard        ○ available      depends on: Phase 4
   Phase 6  Notifications           ○ available      depends on: Phase 4, Phase 5
 
-Run /ganger-claim <N> to take a slice.
+Next steps:
+  🟢 /ganger-claim <N>     → claim an available phase
+  🔵 /ganger-handoff        → hand off your in-progress phase
+  🟡 /ganger-done <N>       → mark a merged phase as complete
 ```
 
-If all phases are merged, print: "✓ All phases complete."
+If all phases are merged, print: "✓ All phases complete. No next steps."
 
 ## Step 4 — Read local handle (optional)
 
 If `.ganger/config.md` exists, read the local handle. If the current contributor owns any in-progress slices, append a note:
 ```
 You own: Phase <N> (<branch>)
+  🟢 Your next step: /ganger-handoff when this phase is done
 ```

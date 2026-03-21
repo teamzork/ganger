@@ -70,7 +70,14 @@ If any phases are newly unblocked:
     Phase <X>  <title>
     Phase <Y>  <title>
 
-Run /ganger-claim <N> to take one.
+Next steps:
+  🟢 /ganger-claim <N>     → take a newly unblocked phase
+  🟡 /ganger-status          → see full project state
 ```
 
-If nothing is unblocked, just print the confirmation and nothing else.
+If nothing is unblocked, print the confirmation followed by:
+```
+Next steps:
+  🟢 /ganger-claim <N>     → claim another available phase
+  🟡 /ganger-status          → see full project state
+```

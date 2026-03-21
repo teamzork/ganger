@@ -47,7 +47,9 @@ Ganger — Project Status
   Phase 2  <title>   ○ available
   ...
 
-Run /ganger-claim <N> to take a slice.
+Next steps:
+  🟢 /ganger-claim <N>     → claim a phase and start working
+  🟡 /ganger-status          → see who's working on what
 ```
 
 Then print:

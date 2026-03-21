@@ -87,12 +87,12 @@ Print this message, substituting the actual remote URL if available:
 ```
 ✓ Ganger initialized with <N> phases.
 
-Each teammate should:
-  1. Clone or pull this repo
-  2. Run /ganger-setup  (or $ganger-setup on Codex CLI)
-  3. Run /ganger-status to see available slices
-  4. Run /ganger-claim <N> to take a phase
-
-Push this commit so teammates can pull the initial state:
-  git push origin main
+Next steps:
+  🟢 Push to remote:  git push origin main
+  🔵 Share with teammates — each one should:
+       1. Clone or pull this repo
+       2. Run /ganger-setup  (or $ganger-setup on Codex CLI)
+       3. Run /ganger-status to see available slices
+       4. Run /ganger-claim <N> to take a phase
+  🟡 /ganger-status          → verify the initial state
 ```

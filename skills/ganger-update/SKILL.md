@@ -68,5 +68,7 @@ Updated commands in: ~/.claude/commands/
 
 End with:
 ```
-Restart your agent session to pick up the new skills.
+Next steps:
+  🟢 Restart your agent session to pick up the new skills
+  🟡 /ganger-status          → verify everything works
 ```
